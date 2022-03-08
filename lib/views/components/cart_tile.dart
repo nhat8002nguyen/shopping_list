@@ -2,7 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:shopping_list/controllers/shop_controller.dart';
-import 'model.dart';
+import '../../data_access/dtos/product/product_dto.dart';
 import 'package:get/get.dart';
 
 class CartTile extends StatelessWidget {
@@ -12,10 +12,8 @@ class CartTile extends StatelessWidget {
     required this.id,
   }) : super(key: key);
 
-  final CartModel model;
+  final ProductDto model;
   final int id;
-
-  final ShopController shopController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -38,20 +36,20 @@ class CartTile extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(model.name),
+                  Text(model.title),
                   Text("\$${model.price}",
                       style: Theme.of(context).textTheme.headline5),
                 ],
               ),
             ),
             ElevatedButton(
-              onPressed: () => shopController.decreaseItemCount(id),
+              onPressed: () => {},
               child: const Text("-"),
               style: ElevatedButton.styleFrom(shape: CircleBorder()),
             ),
-            Obx(() => Text(shopController.getItemCount(id).toString())),
+            Obx(() => Text('25')),
             ElevatedButton(
-              onPressed: () => shopController.increaseItemCount(id),
+              onPressed: () => {},
               child: const Text("+"),
               style: ElevatedButton.styleFrom(shape: CircleBorder()),
             ),

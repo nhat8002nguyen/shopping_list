@@ -1,15 +1,20 @@
 import 'dart:async';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shopping_list/data_access/apis/setup_clients.dart';
+import 'package:shopping_list/data_access/repositories/setup_repositories.dart';
+import 'package:shopping_list/views/controllers/setup_controllers.dart';
+import 'package:shopping_list/views/miscs/app_getview/app_getview.dart';
 
-import 'model.dart';
-import 'cart_tile.dart';
+import 'data_access/dtos/product/product_dto.dart';
+import 'views/components/cart_tile.dart';
 import 'package:shopping_list/controllers/shop_controller.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-
-  Get.put(ShopController());
+  setupRestClient();
+  setupRepositories();
+  setupControlers();
 
   runApp(App());
 }
@@ -18,14 +23,6 @@ const productNumber = 10;
 
 class App extends StatelessWidget {
   App({Key? key}) : super(key: key);
-
-  final shopController = Get.find<ShopController>();
-  // final shopController = Get.put(ShopController());
-
-  final _productList = List.generate(
-    productNumber,
-    (index) => CartModel(name: "Product$index", price: 120 + 18 * index),
-  );
 
   @override
   Widget build(BuildContext context) {
@@ -78,8 +75,8 @@ class App extends StatelessWidget {
                 child: Container(
                   child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Obx(() => Text("${shopController.totalCount}",
-                          style: const TextStyle(color: Colors.white)))),
+                      child: Obx(() => const Text("30",
+                          style: TextStyle(color: Colors.white)))),
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     color: Colors.red,
