@@ -6,6 +6,7 @@ abstract class CartController extends GetxController {
   int get getTotalCount;
   List<CartItemModel> get getCartList;
 
+  int getItemCount(ProductDto product);
   void addItemToCart(ProductDto product);
   void removeItemFromCart(ProductDto product);
 }

@@ -1,7 +1,5 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'package:shopping_list/controllers/shop_controller.dart';
+import 'package:shopping_list/views/controllers/cart/cart_controller.dart';
 import '../../data_access/dtos/product/product_dto.dart';
 import 'package:get/get.dart';
 
@@ -15,9 +13,10 @@ class CartTile extends StatelessWidget {
   final ProductDto model;
   final int id;
 
+  final cartController = Get.find<CartController>();
+
   @override
   Widget build(BuildContext context) {
-    print("CartTile");
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -43,15 +42,15 @@ class CartTile extends StatelessWidget {
               ),
             ),
             ElevatedButton(
-              onPressed: () => {},
+              onPressed: () => {cartController.removeItemFromCart(model)},
               child: const Text("-"),
-              style: ElevatedButton.styleFrom(shape: CircleBorder()),
+              style: ElevatedButton.styleFrom(shape: const CircleBorder()),
             ),
-            Obx(() => Text('25')),
+            Obx(() => Text(cartController.getItemCount(model).toString())),
             ElevatedButton(
-              onPressed: () => {},
+              onPressed: () => {cartController.addItemToCart(model)},
               child: const Text("+"),
-              style: ElevatedButton.styleFrom(shape: CircleBorder()),
+              style: ElevatedButton.styleFrom(shape: const CircleBorder()),
             ),
           ],
         ),

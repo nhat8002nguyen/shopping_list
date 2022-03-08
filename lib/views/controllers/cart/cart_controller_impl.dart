@@ -17,6 +17,14 @@ class CartControllerImpl extends CartController {
       .fold(0, (previousValue, element) => previousValue + element.quantity);
 
   @override
+  int getItemCount(ProductDto product) {
+    var existingItem =
+        getCartList.firstWhereOrNull((item) => item.product.id == product.id);
+    if (existingItem == null) return 0;
+    return existingItem.quantity;
+  }
+
+  @override
   void addItemToCart(ProductDto product) {
     var existItem = getCartList
         .firstWhereOrNull((element) => product.id == element.product.id);
