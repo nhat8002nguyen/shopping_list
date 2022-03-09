@@ -33,6 +33,7 @@ class CartControllerImpl extends CartController {
     } else {
       ++existItem.quantity;
     }
+    _cartList.refresh();
   }
 
   @override
@@ -46,5 +47,6 @@ class CartControllerImpl extends CartController {
         --existItem.quantity;
       }
     }
+    _cartList.refresh();
   }
 }

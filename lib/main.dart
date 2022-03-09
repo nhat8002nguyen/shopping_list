@@ -4,7 +4,9 @@ import 'package:shopping_list/common/config/environment.dart';
 import 'package:shopping_list/data_access/apis/setup_clients.dart';
 import 'package:shopping_list/data_access/repositories/setup_repositories.dart';
 import 'package:shopping_list/views/controllers/setup_controllers.dart';
-import 'package:shopping_list/views/modules/shop_page.dart';
+import 'package:shopping_list/views/modules/Cart/cart.dart';
+import 'package:shopping_list/views/modules/shop/shop_controller.dart';
+import 'package:shopping_list/views/modules/shop/shop_page.dart';
 
 void main() {
   EnvironmentUtil.setEnvironment(Environment.dev);
@@ -21,6 +23,12 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ShopPage();
+    return GetMaterialApp(
+      initialRoute: '/',
+      getPages: [
+        GetPage(name: '/', page: () => ShopPage()),
+        GetPage(name: '/cart', page: () => const Cart()),
+      ],
+    );
   }
 }

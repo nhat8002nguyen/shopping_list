@@ -42,13 +42,13 @@ class CartTile extends StatelessWidget {
               ),
             ),
             ElevatedButton(
-              onPressed: () => {cartController.removeItemFromCart(model)},
+              onPressed: () => cartController.removeItemFromCart(model),
               child: const Text("-"),
               style: ElevatedButton.styleFrom(shape: const CircleBorder()),
             ),
             Obx(() => Text(cartController.getItemCount(model).toString())),
             ElevatedButton(
-              onPressed: () => {cartController.addItemToCart(model)},
+              onPressed: () => cartController.addItemToCart(model),
               child: const Text("+"),
               style: ElevatedButton.styleFrom(shape: const CircleBorder()),
             ),

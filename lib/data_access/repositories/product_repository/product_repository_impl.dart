@@ -6,7 +6,7 @@ class ProductRepositoryImpl extends ProductRepository {
   final RestClient _restClient;
 
   ProductRepositoryImpl({
-    required final restClient,
+    required RestClient restClient,
   }) : _restClient = restClient;
 
   @override
