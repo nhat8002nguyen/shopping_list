@@ -4,13 +4,18 @@ import '../../data_access/dtos/product/product_dto.dart';
 import 'package:get/get.dart';
 
 class CartTile extends StatelessWidget {
+  // Preference của a là mình nên đưa definition của biến lên trước constructor,
+  // nhìn tự nhiên hơn
+
   CartTile({
     Key? key,
     required this.model,
     required this.id,
   }) : super(key: key);
 
+  // model => product
   final ProductDto model;
+  // Chỗ này truyền thừa biến id
   final int id;
 
   final cartController = Get.find<CartController>();
@@ -37,6 +42,7 @@ class CartTile extends StatelessWidget {
                 children: [
                   Text(model.title),
                   Text("\$${model.price}",
+                      // Thiếu phẩy
                       style: Theme.of(context).textTheme.headline5),
                 ],
               ),
@@ -44,12 +50,15 @@ class CartTile extends StatelessWidget {
             ElevatedButton(
               onPressed: () => cartController.removeItemFromCart(model),
               child: const Text("-"),
+              // Thiếu phẩy
               style: ElevatedButton.styleFrom(shape: const CircleBorder()),
             ),
+            // Thiếu phẩy
             Obx(() => Text(cartController.getItemCount(model).toString())),
             ElevatedButton(
               onPressed: () => cartController.addItemToCart(model),
               child: const Text("+"),
+              // Thiếu phẩy
               style: ElevatedButton.styleFrom(shape: const CircleBorder()),
             ),
           ],
