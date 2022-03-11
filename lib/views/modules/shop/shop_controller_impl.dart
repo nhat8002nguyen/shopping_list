@@ -9,6 +9,9 @@ class ShopControllerImpl extends ShopController {
   ShopControllerImpl({required ProductRepository productRepository})
       : _productRepository = productRepository;
 
+  // Chỗ này e nên nhóm Rx và getter lại 1 cục, mục đích là để dễ nhìn + dễ
+  // copy paste, xóa từng biến
+
   final RxBool _isLoading = RxBool(false);
   final Rx<List<ProductDto>> _productList = Rx([]);
 
