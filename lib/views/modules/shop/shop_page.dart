@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_list/views/components/app_header.dart';
 import 'package:shopping_list/views/components/cart_tile.dart';
-import 'package:shopping_list/views/controllers/cart/cart_controller.dart';
 import 'package:shopping_list/views/miscs/app_getview/app_getview.dart';
 import 'package:shopping_list/views/modules/shop/shop_controller.dart';
 import 'package:shopping_list/views/modules/shop/shop_controller_impl.dart';
@@ -30,8 +29,9 @@ class ShopPage extends AppGetView<ShopController> {
                 var productList = controller.productList;
                 if (isLoading) {
                   return const Center(
-                      child: CircularProgressIndicator(
-                          value: 100, color: Colors.blue));
+                    child: CircularProgressIndicator(
+                        value: 100, color: Colors.blue),
+                  );
                 }
                 return ListView.builder(
                   itemCount: productList.length,

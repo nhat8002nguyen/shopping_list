@@ -5,7 +5,6 @@ import 'package:shopping_list/data_access/apis/setup_clients.dart';
 import 'package:shopping_list/data_access/repositories/setup_repositories.dart';
 import 'package:shopping_list/views/controllers/setup_controllers.dart';
 import 'package:shopping_list/views/modules/Cart/cart.dart';
-import 'package:shopping_list/views/modules/shop/shop_controller.dart';
 import 'package:shopping_list/views/modules/shop/shop_page.dart';
 
 void main() {
@@ -26,8 +25,15 @@ class App extends StatelessWidget {
     return GetMaterialApp(
       initialRoute: '/',
       getPages: [
-        GetPage(name: '/', page: () => ShopPage()),
-        GetPage(name: '/cart', page: () => const Cart()),
+        GetPage(
+          name: '/',
+          page: () => ShopPage(),
+        ),
+        GetPage(
+          name: '/cart',
+          page: () => const Cart(),
+          transition: Transition.rightToLeft,
+        ),
       ],
     );
   }

@@ -9,6 +9,10 @@ class AppHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var cartController = Get.find<CartController>();
+    var titles = {
+      '/': 'Shop',
+      '/cart': 'My Cart',
+    };
 
     return Container(
       color: Colors.blue,
@@ -16,8 +20,13 @@ class AppHeader extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          if (Get.currentRoute == '/cart')
+            GestureDetector(
+              onTap: () => Get.back(),
+              child: const Icon(Icons.arrow_back, color: Colors.white),
+            ),
           Text(
-            "My Cart",
+            titles[Get.currentRoute] ?? 'Page Not Found',
             style: Theme.of(appContext)
                 .textTheme
                 .headline4
